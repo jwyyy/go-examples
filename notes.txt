@@ -1,0 +1,25 @@
+Basic Golang Notes
+
+*** LOOP
+1. There is only 1 key word for looping in Golang, i.e. 'for', and there are 3 different ways for using 'for'
+2. 'for condition' is equivalent to a while loop in other languages. Here, the condition can depend on some evolving variable, 
+   and the condition will be re-evaluated every time the execuation reaches it.
+3. 'for init ; cond ; inc/dec' is similar to the usage of for loop in C++. A re-evaluation of cond will happen every time the program reaches it.
+4. The last usage of 'for' is 'for i, v := range slice/array/string'. This is unique in Golang. The 'range' automatically returns the current index and
+   a copy of its current variable. The value name 'v' is created once at the beginning and is re-used for later iterations. So obtaining its address will
+   result in a same value every time. Either 'i' or 'v' can be a blank placeholder '_'. Unlike [2] and [3], 'range' won't use an updated array. For instance,
+   if the array is incremented inside the loop block, the new values are not visible to 'range'. My guess is the 'range' is initialized using the original length,
+   and it is fixed. Although the underlying array data does grow, the length doesn't change. So 'range' won't loop over new values. 
+   Lastly, there is a short version, 'for i := range array', the variable is the current index not value.
+5. (05/20/2020) Just saw a very interesting usage! It seems that using 'q = q[1:]' insider 'for i, v := range array' works. This is different from growing the array.
+   The array length used in 'range' still is not changing. What changes is the beginning of the array, which is visible after the block is finished.
+
+*** STRING
+1. A string is an array of bytes, i.e. [fixed len]byte. You can convert a string to a byte slice thru []byte(string) or a rune slice thru []rune(string).
+2. It can't be modified. Appending a byte to a string doesn't work as it is in Python3. To write a string like a slice, one can use the struct strings.Builder{} provided
+   in "strings" package. It functions like a slice of characters.
+3. Details of strings.Builder{} and its methods:
+   1. to declare and initialize a new variable, use strings.Builder{} (empty);
+   2. it has slice-like methods, such as Cap(), Len(), Grow(n int);
+   3. 4 write methods allow to write to the Builder{}, they are Write([]byte), WriteByte(c byte), WriteRune(rune), WriteString(string);
+   4. lastly, to convert a strings.Builder{} to a string, use the String() method.
