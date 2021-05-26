@@ -23,3 +23,8 @@ Basic Golang Notes
    2. it has slice-like methods, such as Cap(), Len(), Grow(n int);
    3. 4 write methods allow to write to the Builder{}, they are Write([]byte), WriteByte(c byte), WriteRune(rune), WriteString(string);
    4. lastly, to convert a strings.Builder{} to a string, use the String() method.
+4. A string is a read-only slice of bytes. It holds arbitrary bytes. Looping over a string using 'range' return each rune, not byte. Unless indexing is used.
+5. To declare a rune/byte, use single quotes. (This is 'similar' to char in some languages.) If we declare a byte, we need to specify its type 'var x byte'. 
+   Otherwise, the default type is a rune. 
+6. Rune literals are 32-bit integer values. That means arithematics operators can be used on them, such as 'a' - 34.
+7. The package 'bytes' provides a method to join a slice of strings: Join([][]byte, sep []byte) []byte. It works like '.join()' method in Python3. 
