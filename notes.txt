@@ -28,3 +28,9 @@ Basic Golang Notes
    Otherwise, the default type is a rune. 
 6. Rune literals are 32-bit integer values. That means arithematics operators can be used on them, such as 'a' - 34.
 7. The package 'bytes' provides a method to join a slice of strings: Join([][]byte, sep []byte) []byte. It works like '.join()' method in Python3. 
+
+
+*** SLICE and ARRAY
+1. declaration & initialization. Arrays are initialized by default value when declared. That is, var arr [4]int already assigns a memory of 4 ints to arr. However, for slices,
+   the initialization needs to be explicit. There are three ways: (1) using literals, vec := []int{1,2,3} (2) using an empty slice, vec := []int{} (3) using make([]T,len,cap).
+   For make(), the cap argument can be omitted. In that case, cap = len. For example, we can do either vec := make([]T, len, cap) or vec := make([]T, len).
