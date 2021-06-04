@@ -1,5 +1,6 @@
 Basic Golang Notes
 
+
 *** LOOP
 1. There is only 1 key word for looping in Golang, i.e. 'for', and there are 3 different ways for using 'for'
 2. 'for condition' is equivalent to a while loop in other languages. Here, the condition can depend on some evolving variable, 
@@ -13,6 +14,7 @@ Basic Golang Notes
    Lastly, there is a short version, 'for i := range array', the variable is the current index not value.
 5. (05/20/2020) Just saw a very interesting usage! It seems that using 'q = q[1:]' insider 'for i, v := range array' works. This is different from growing the array.
    The array length used in 'range' still is not changing. What changes is the beginning of the array, which is visible after the block is finished.
+
 
 *** STRING
 1. A string is an array of bytes, i.e. [fixed len]byte. You can convert a string to a byte slice thru []byte(string) or a rune slice thru []rune(string).
@@ -34,3 +36,5 @@ Basic Golang Notes
 1. declaration & initialization. Arrays are initialized by default value when declared. That is, var arr [4]int already assigns a memory of 4 ints to arr. However, for slices,
    the initialization needs to be explicit. There are three ways: (1) using literals, vec := []int{1,2,3} (2) using an empty slice, vec := []int{} (3) using make([]T,len,cap).
    For make(), the cap argument can be omitted. In that case, cap = len. For example, we can do either vec := make([]T, len, cap) or vec := make([]T, len).
+2. When an array is passed into a function, a new copy is created. Modifying the copy inside the function won't change the original array. However, passing a slice into a function
+   has a different behavior. A copy of the slice's head (info, i.e. its array address, len, cap, etc) is created, and modifying this copy would end up changing the original slice.
