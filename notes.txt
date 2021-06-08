@@ -38,3 +38,4 @@ Basic Golang Notes
    For make(), the cap argument can be omitted. In that case, cap = len. For example, we can do either vec := make([]T, len, cap) or vec := make([]T, len).
 2. When an array is passed into a function, a new copy is created. Modifying the copy inside the function won't change the original array. However, passing a slice into a function
    has a different behavior. A copy of the slice's head (info, i.e. its array address, len, cap, etc) is created, and modifying this copy would end up changing the original slice.
+3. The append() function can be applied to a nil slice, and it will increase the slice's cap and len.
