@@ -1,5 +1,8 @@
 Basic Golang Notes
 
+*** ToDo:
+1. Implement standard data structure structs and methods.
+2. 
 
 *** LOOP
 1. There is only 1 key word for looping in Golang, i.e. 'for', and there are 3 different ways for using 'for'
